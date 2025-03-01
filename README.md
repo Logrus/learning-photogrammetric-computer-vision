@@ -20,6 +20,8 @@ Here I have a more detailed re-work of the material which I did for myself, but 
 
 Clone repository.
 
+Docker is recommended. Open in container.
+
 Activate environment. Using [uv](https://docs.astral.sh/uv/) is recommended, but not required.
 
 Install and initialize git LFS to pull images.

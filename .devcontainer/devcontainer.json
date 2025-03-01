@@ -1,0 +1,27 @@
+{
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "..",
+        "args": {
+            "USER_NAME": "${localEnv:USERNAME}",
+            "USER_UID": "1000",
+            "USER_GID": "1000"
+        }
+    },
+    "remoteUser": "${localEnv:USERNAME}",
+    "runArgs": [],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.black-formatter",
+                "ms-python.debugpy",
+                "ms-python.isort",
+                "ms-python.mypy-type-checker",
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-toolsai.jupyter",
+                "streetsidesoftware.code-spell-checker"
+            ]
+        }
+    }
+}
