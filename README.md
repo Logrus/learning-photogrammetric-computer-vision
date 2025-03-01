@@ -22,3 +22,5 @@ Clone repository.
 
 Activate environment. Using [uv](https://docs.astral.sh/uv/) is recommended, but not required.
 
+Install and initialize git LFS to pull images.
+
