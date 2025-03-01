@@ -2,6 +2,8 @@
 
 ## About project
 
+![stitched images](doc/stitched_result.png)
+
 This project is for *educational* purposes, it contains implementation of image stitching using classical keypoint detection and description calculation.
 
 The goal of this project is to serve a quick guide of refresher on how classical visual feature detector pipelines work.
