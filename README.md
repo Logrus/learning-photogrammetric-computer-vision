@@ -8,7 +8,7 @@ The goal of this project is to serve a quick guide of refresher on how classical
 
 The project covers:
 
-- Harris and Shi-Thomasi corner detectors
+- [Harris and Shi-Thomasi corner detectors](00_keypoints.ipynb)
 - Simplified SIFT-inspired descriptor
 - Homography computation
 
