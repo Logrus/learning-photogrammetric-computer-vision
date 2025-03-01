@@ -2,10 +2,24 @@ FROM python:3.12-slim
 
 SHELL [ "/bin/bash", "-c" ]
 
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    git \
+    git-lfs \
+    libgtk-3-dev \
+    libgl1-mesa-glx \
+    libxkbcommon-x11-0 \
+    sudo \
+    unzip \
+    wget \
+    && update-alternatives --install /usr/bin/python python /usr/bin/python3 1 \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
 # Set environment variables to prevent issues
 ENV PIP_NO_CACHE_DIR=off \
     PIP_DISABLE_PIP_VERSION_CHECK=on \
     PYTHONUNBUFFERED=1
+
+
 
 # Install required dependencies
 RUN apt-get update && apt-get install -y curl && \

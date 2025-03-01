@@ -10,12 +10,12 @@ from src.sobel_kernel import sobel_kernel_Dx, sobel_kernel_Dy
 from src.harris_corners import harris_corners
 from src.shi_tomasi_corners import shi_tomasi_corners
 from src.box_summing import box_summing
-from src.nms_2d import nms_2d
+from src.non_maximum_suppression import nms_2d
 from enum import Enum
 
 
 # Enum for corner types
-class CornerCriterionType(Enum):
+class CornerCriterion(Enum):
     HARRIS = "harris"
     SHI_TOMASI = "shi-tomasi"
 
@@ -48,9 +48,9 @@ def compute_corners(image: np.ndarray, criterion: CornerCriterion, rel_threshold
     xy = box_summing(IxIy, kernel_size)
     yy = box_summing(Iy2, kernel_size)
 
-    if criterion == CornerCriterionType.HARRIS:
+    if criterion == CornerCriterion.HARRIS:
         R = harris_corners(xx, yy, xy, k=0.04)
-    elif criterion == CornerCriterionType.SHI_TOMASI:
+    elif criterion == CornerCriterion.SHI_TOMASI:
         R = shi_tomasi_corners(xx, yy, xy)
     else:
         raise RuntimeError(f"Unknown corner detector {type}")
@@ -59,7 +59,7 @@ def compute_corners(image: np.ndarray, criterion: CornerCriterion, rel_threshold
     nms_image = nms_2d(R, 3)
 
     # Apply additional thresholding
-    rel_T = np.max(R) * T
+    rel_T = np.max(R) * rel_threshold
     corners = np.column_stack(np.where(nms_image > rel_T))
 
     # Revert corners from row, col to x, y format
