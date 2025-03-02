@@ -4,20 +4,15 @@
 #
 
 import numpy as np
+from scipy.spatial.distance import cdist
 
 
 def compute_matches(D1, D2):
     """Computes matches for two images using the descriptors.
     Uses the Lowe's criteria to determine the best match."""
-    N1 = len(D1)
-    N2 = len(D2)
 
-    scores = np.zeros((N1, N2))
-    for i in range(N1):
-        for j in range(N2):
-            d1 = D1[i]
-            d2 = D2[j]
-            scores[i, j] = np.linalg.norm(d1 - d2)
+    scores = cdist(np.asarray(D1), np.asarray(D2), metric='euclidean')
+
     idx = np.argsort(scores, axis=1)
     indices = idx[:, :2]
     two_scores = scores[np.arange(indices.shape[0])[:, None], indices]
