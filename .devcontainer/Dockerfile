@@ -3,6 +3,7 @@ FROM python:3.12-slim
 SHELL [ "/bin/bash", "-c" ]
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    build-essential \
     git \
     git-lfs \
     libgtk-3-dev \
@@ -11,6 +12,14 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     sudo \
     unzip \
     wget \
+    libcairo2-dev \
+    libpango1.0-dev \
+    ffmpeg \
+    texlive \
+    texlive-latex-extra \
+    texlive-fonts-recommended \
+    texlive-fonts-extra \
+    texlive-xetex \
     && update-alternatives --install /usr/bin/python python /usr/bin/python3 1 \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
